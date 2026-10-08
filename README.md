@@ -24,12 +24,12 @@ The data was published on Kaggle by Vinoth Kanna, click this link to view the da
 * Engineered a Profitability Status column to categorize transactions into Net Profit or Net Loss transactions.
 
 Excerpt of raw dataset:
-![Raw Dataset 1](Screenshots\Excerpt-of-raw-dataset-1.PNG)
-![Raw Dataset 2](Screenshots\Excerpt-of-raw-dataset-2.PNG)
+![Excerpt of raw dataset](Screenshots/Excerpt-of-raw-dataset-1.PNG)
+![Excerpt of raw dataset](Screenshots/Excerpt-of-raw-dataset-2.PNG)
 
 Excerpt of cleaned dataset:
-![Cleaned Dataset 1](Screenshots\Excerpt-of-cleaned-dataset-1.PNG)
-![Cleaned Dataset 2](Screenshots\Excerpt-of-cleaned-dataset-2.PNG)
+![Cleaned Dataset 1](Screenshots/Excerpt-of-cleaned-dataset-1.PNG)
+![Cleaned Dataset 2](Screenshots/Excerpt-of-cleaned-dataset-2.PNG)
 
 **Calculated Fields and Measures:** The following measures were engineered in Power BI using DAX to dynamically quantify performance, each measure includes accompanying label measures for added context:
 * Sales Volume
@@ -48,7 +48,7 @@ Excerpt of cleaned dataset:
 * Region_Dim -> Fact_Table
 * Product_Dim -> Fact_Table
 * Calendar -> Fact table
-![Data Model](Screenshots\Data-Model.PNG)
+![Data Model](Screenshots/Data-Model.PNG)
 
 **Data Visualization:** Two interactive report pages were developed, each containing multiple charts to represent business performance and profitability.
 * Line Chart to show KPI trends
@@ -64,10 +64,10 @@ The report was categorized in two pages:
 Below are images of the report pages. Follow this link to interact with the report online: [Published Report](https://app.powerbi.com/view?r=eyJrIjoiOWUxYzBkMjctMmJlMS00NzRjLWE4YWYtOWQ2ZTI5NTZiYWZlIiwidCI6ImJmZDA1N2Q1LThjNjQtNDEyNi1iOGQ3LTFkOGUxMWI4NGU5YSJ9).
 
 * **Performance Overview**
-![Performance Overview](Report_Pages\Business-Performance-page.jpg)
+![Performance Overview](Report_Pages/Business-Performance-page.jpg)
 
 * **Business Profitability**
-![Business Profitability](Report_Pages\Business-Profitability-page.jpg)
+![Business Profitability](Report_Pages/Business-Profitability-page.jpg)
 
 ## Insights
 **Executive Overview:**
