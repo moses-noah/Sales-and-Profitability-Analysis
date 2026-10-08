@@ -1,0 +1,117 @@
+1. Recalculated Sales_Amount to Total_Sales to be logicaly coherent with Unit_Price, Quantity_Sold and Discount.
+
+2. Restrcutured Payment Method to include Cash on Delivery for sales that happend online but are paid for by cash.
+
+3. Implemented Table Referencing for creating other tables in order to ensure robust data schema.
+
+4. Created accompanying Region Dimension table to normalize location related columns and Product Dimension table to normalize product related columns.
+
+5. Wrote custom M Query code to create a calendar table. 
+
+
+
+
+
+
+
+calculate original margin
+calculate effective margin
+calculate profit
+create calendar table
+
+
+
+
+Standard Margin Vs Effective Margin kpi for Revenue Leakage Analysis
+
+
+
+
+
+let 
+    // 1. The Anchor: Scan the fact table to find the earliest date
+    MinDate = List.Min(Fact_Table[Transaction_Date]),
+
+    // 2. The Horizon: Scan the fact table to find the absolute latest date
+    MaxDate = List.Max(Fact_Table[Transaction_Date]),
+
+    // 3. The Distance: Calculate how many days between the Anchor and Horizon
+    DayCount = Duration.Days(MaxDate - MinDate) + 1,
+
+    // 4. The Chain: Generate a continuos list of dates starting at the anchor
+    DateList = List.Dates(MinDate, DayCount, #duration(1,0,0,0)),
+
+    // 5. The Conversion: Turn the raw list of dates back to a standard table
+    ConvertedToTable = Table.FromList(DateList, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+
+    // 6. The Cleanup: Rename the column and lock in the data type
+    RenamedColumns = Table.RenameColumns(ConvertedToTable, {{"Column1", "Date"}}),
+    FinalTable = Table.TransformColumnTypes(RenamedColumns, {{"Date", type date}})
+in
+    FinalTable
+
+
+
+
+
+
+
+
+
+
+Fact Table: Contains facts about transaction events
+	Transaction Date: The date when the sale occurred. Randomly selected from the year 2023.
+	Region Index Key: This key links the fact table to the Region table
+	Product Index Key: This key links the fact table to the Product table
+	Customer Type: Returning or New
+	Sales Channel: Retail or Online
+	Payment Method: Credit Card, Cash, Cash on Delivery or Transfer 
+	Quantity Sold: Quantity of unit item sold
+	Unit Cost: Cost of procurement on unit item sold
+	Unit Price: Unit price of product item sold. This is the addition of Unit Cost and assinged margin. 
+	Discount: Amount deducted to make a sale
+	Total Revenue: Total sales made, discount percentage is accounted for.
+	Standard Profit: Profit with discount not accounted for.
+	Effective Profit: Profit with discount accounted for.
+	Profitability Status: Net Loss or Net Profit depending on Effective Profit value.
+
+Product Dimension: Atable to normalize the Product related columns
+	Product Index Key: Unique Identifier for a product.
+	Product Number: Unique identifier for a product in its category. Unique products in different categories can have similar Product Number.
+	Product Category: Unique category for similar products.
+
+Region Dimension: A table to normalize Region and Sales Rep, each sales rep handles an instances of all region. There are 5 sales rep and 4 Region so the instances in the table are a cross multiplication of all regions and sales rep. 
+	Region Index Key: Unique Identifier for each instance in the table.
+	Region: South, North, West, East.
+	Sales Rep: Names of sales reps.
+
+Calendar: Contains dates, Year, Quarter, Month and Days.
+
+
+
+
+
+
+
+
+
+
+Profitability Breakdown:
+KPIs:
+-effective revenue vs standard revenue / lost revenue (target profit)
+-effective margin(including profit figure) vs standard margin(including profit figure) / Discount (in percentage and figure)
+
+-Standard/Effective Revenue and Cost monthly trend (clustered bar chart)
+-Standard vs Effective Profit monthly trend (clustered bar chart)
+-discount and effective profit by region, sales rep, product category and customer type (waterfall chart. Using feild parameter to filter between discount charts and effective profit charts)
+-profitability status (donut chart)
+
+
+
+
+
+
+
+
+***Rename Standard to Expected***
+***Rename Effective to Actual***
