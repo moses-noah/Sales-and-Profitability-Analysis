@@ -98,7 +98,7 @@ Below are images of the report pages. Follow this link to interact with the repo
 This project explores the performance of a fictional retail business and the disadvantages of an unstructured and excessive discount strategy to a business's performance and profitability. Successful implementation of the data-driven insights and recommendations from this analysis should improve business performance, profitability, customer retention, and sustain long term growth.
 
 ## Relevant Links
-* **Online Report:** [Power BI Service](https://app.powerbi.com/view?r=eyJrljoiOWUxYzBkMjctMmJIMS00NzRjLWE4YWYtOWQ2ZTI5NTZiYWZlliwidCI6ImJmZDA1N2Q1LThjNjQtNDEyNi1iOGQ3LTFkOGUxMWI4NGU5YSJ9)
+* **Online Report:** [Published Report](https://app.powerbi.com/view?r=eyJrIjoiOWUxYzBkMjctMmJlMS00NzRjLWE4YWYtOWQ2ZTI5NTZiYWZlIiwidCI6ImJmZDA1N2Q1LThjNjQtNDEyNi1iOGQ3LTFkOGUxMWI4NGU5YSJ9)
 * **GitHub Repository:** [Moses Noah GitHub](https://github.com/moses-noah/Sales-and-Profitability-Analysis)
 * **LinkedIn Profile:** [Moses Noah](https://www.linkedin.com/in/moses-noah/)
 * **Portfolio Website:** [Moses Noah Portfolio](https://moses-noah.github.io/)
